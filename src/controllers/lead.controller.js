@@ -14,6 +14,7 @@ export const CreateLead = async (req, res) => {
 }
 
 
+
 export const allLeads = async (req, res) => {
     try {
         const allLeads = await Lead.find({});
@@ -21,6 +22,19 @@ export const allLeads = async (req, res) => {
             success: true,
             data: allLeads,
             message: "all leads fetched successfully!"
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+export const deleteAllLeads = async (req, res) => {
+    try {
+        await Lead.deleteMany({});
+        res.status(200).json({
+            success: true,
+            message: "all leads deleted successfully!"
         })
     } catch (error) {
         console.log(error);
